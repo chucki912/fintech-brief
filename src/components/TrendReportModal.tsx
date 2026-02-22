@@ -785,26 +785,37 @@ export default function TrendReportModal({ isOpen, onClose, report, loading, iss
                             <div className="loading-visual">
                                 <div className="spinner"></div>
                             </div>
-                            <div className="progress-stepper">
-                                <div className={`step-item ${loadingStep >= 1 ? 'active' : ''} ${loadingStep > 1 ? 'completed' : ''}`}>
-                                    <span className="step-icon">{loadingStep > 1 ? '✓' : '1'}</span>
-                                    <span className="step-label">Collect News</span>
-                                </div>
-                                <div className={`step-line ${loadingStep > 1 ? 'filled' : ''}`}></div>
-                                <div className={`step-item ${loadingStep >= 2 ? 'active' : ''} ${loadingStep > 2 ? 'completed' : ''}`}>
-                                    <span className="step-icon">{loadingStep > 2 ? '✓' : '2'}</span>
-                                    <span className="step-label">Clustering</span>
-                                </div>
-                                <div className={`step-line ${loadingStep > 2 ? 'filled' : ''}`}></div>
-                                <div className={`step-item ${loadingStep >= 3 ? 'active' : ''}`}>
-                                    <span className="step-icon">3</span>
-                                    <span className="step-label">Generate Report</span>
-                                </div>
-                            </div>
-                            <p className="status-message-large">{statusMessage}</p>
-                            <div className="loading-pulse">
-                                <span className="loading-tip">💡 AI is analyzing Fintech news from the past week. Please wait.</span>
-                            </div>
+                            {weeklyMode ? (
+                                <>
+                                    <div className="progress-stepper">
+                                        <div className={`step-item ${loadingStep >= 1 ? 'active' : ''} ${loadingStep > 1 ? 'completed' : ''}`}>
+                                            <span className="step-icon">{loadingStep > 1 ? '✓' : '1'}</span>
+                                            <span className="step-label">Collect News</span>
+                                        </div>
+                                        <div className={`step-line ${loadingStep > 1 ? 'filled' : ''}`}></div>
+                                        <div className={`step-item ${loadingStep >= 2 ? 'active' : ''} ${loadingStep > 2 ? 'completed' : ''}`}>
+                                            <span className="step-icon">{loadingStep > 2 ? '✓' : '2'}</span>
+                                            <span className="step-label">Clustering</span>
+                                        </div>
+                                        <div className={`step-line ${loadingStep > 2 ? 'filled' : ''}`}></div>
+                                        <div className={`step-item ${loadingStep >= 3 ? 'active' : ''}`}>
+                                            <span className="step-icon">3</span>
+                                            <span className="step-label">Generate Report</span>
+                                        </div>
+                                    </div>
+                                    <p className="status-message-large">{statusMessage}</p>
+                                    <div className="loading-pulse">
+                                        <span className="loading-tip">💡 AI is analyzing Fintech news from the past week. Please wait.</span>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <p className="status-message-large">{statusMessage}</p>
+                                    <div className="loading-pulse">
+                                        <span className="loading-tip">🔍 AI is generating a deep dive analysis on this issue. Please wait.</span>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     ) : (
                         <div className="report-content">
