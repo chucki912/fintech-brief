@@ -8,6 +8,7 @@ import TrendReportModal from '@/components/TrendReportModal';
 import ManualSourceInput from '@/components/ManualSourceInput';
 import ArchiveListView from '@/components/ArchiveListView';
 import { BriefReport, IssueItem } from '@/types';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface BriefSummary {
     id: string;
@@ -19,6 +20,7 @@ interface BriefSummary {
 }
 
 export default function ArchivePage() {
+    const { isAdmin } = useAuth();
     const [briefs, setBriefs] = useState<BriefSummary[]>([]);
     const [selectedBrief, setSelectedBrief] = useState<BriefReport | null>(null);
     const [loading, setLoading] = useState(true);
@@ -249,11 +251,11 @@ export default function ArchivePage() {
         <div className="container">
             {/* Header */}
             <header className="header">
-                <Link href="/" className="logo">
+                <Link href={isAdmin ? "/?admin=true" : "/"} className="logo">
                     💸 Fintech Daily Brief
                 </Link>
                 <nav className="nav">
-                    <Link href="/" className="nav-link">
+                    <Link href={isAdmin ? "/?admin=true" : "/"} className="nav-link">
                         Today's Brief
                     </Link>
                     <ThemeToggle />

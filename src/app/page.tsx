@@ -113,7 +113,7 @@ export default function HomePage() {
             💸 Fintech Daily Brief
           </Link>
           <nav className="nav">
-            <Link href="/archive" className="nav-link">
+            <Link href={isAdmin ? "/archive?admin=true" : "/archive"} className="nav-link">
               Archive
             </Link>
             <ThemeToggle />
