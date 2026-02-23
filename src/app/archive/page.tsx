@@ -287,43 +287,6 @@ export default function ArchivePage() {
                                 </button>
                             </div>
 
-                            <div className="weekly-trigger-container">
-                                {!showWeeklySection ? (
-                                    <button className="weekly-start-btn" onClick={() => setShowWeeklySection(true)}>
-                                        ✨ Generate Weekly Trend Analysis
-                                    </button>
-                                ) : (
-                                    <div className="weekly-control-panel card-glow animate-in">
-                                        <div className="panel-header">
-                                            <div className="panel-info">
-                                                <h3 className="panel-title">Weekly Tech Intelligence Analysis</h3>
-                                                <p className="panel-desc">Clusters all issues from the past 7 days and provides converged analysis of global market trends.</p>
-                                            </div>
-                                            <button className="panel-close" onClick={() => setShowWeeklySection(false)}>×</button>
-                                        </div>
-
-                                        {!weeklyStatus || weeklyStatus === 'failed' ? (
-                                            <div className="panel-action">
-                                                <button className="weekly-action-btn" onClick={handleGenerateWeeklyReport}>
-                                                    Start Analysis (~2-3 mins)
-                                                </button>
-                                                {weeklyStatus === 'failed' && <p className="status-error">{weeklyMessage}</p>}
-                                            </div>
-                                        ) : (
-                                            <div className="progress-container">
-                                                <div className="progress-info">
-                                                    <span className="status-badge pulse">{weeklyStatus}...</span>
-                                                    <span className="progress-percent">{weeklyProgress}%</span>
-                                                </div>
-                                                <div className="progress-track">
-                                                    <div className="progress-fill" style={{ width: `${weeklyProgress}%` }} />
-                                                </div>
-                                                <p className="progress-msg">{weeklyMessage}</p>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
                         </div>
                     )}
                 </div>
