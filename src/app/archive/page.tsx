@@ -338,12 +338,6 @@ export default function ArchivePage() {
                         {/* Action Toolbar - Persistent in Detail or List View Selection Mode */}
                         {(selectedBrief || (viewMode === 'list' && briefs.length > 0)) && (
                             <div className="selection-toolbar animate-in">
-                                <button
-                                    className={`selection-toggle-btn ${isSelectionMode ? 'active' : ''}`}
-                                    onClick={toggleSelectionMode}
-                                >
-                                    {isSelectionMode ? '✅ Exit Selection Mode' : '☑️ Multi-Selection Mode'}
-                                </button>
 
                                 {isSelectionMode && selectedIssues.length > 0 && (
                                     <button
