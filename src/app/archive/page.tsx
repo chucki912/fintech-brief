@@ -377,18 +377,7 @@ export default function ArchivePage() {
                                         <span className="icon">←</span> Back to List
                                     </button>
 
-                                    {selectedBrief.date === new Date().toLocaleDateString('sv-SE', { timeZone: 'America/New_York' }) && (
-                                        <button
-                                            className="delete-button"
-                                            onClick={() => {
-                                                if (confirm('Are you sure you want to delete this brief?')) {
-                                                    handleDelete(selectedBrief.date);
-                                                }
-                                            }}
-                                        >
-                                            🗑️ Delete
-                                        </button>
-                                    )}
+
                                 </div>
 
                                 {/* Brief Detail */}
@@ -434,6 +423,7 @@ export default function ArchivePage() {
                                             isSelected={selectedIssues.some(i => i.headline === issue.headline)}
                                             onSelect={() => toggleIssueSelection(issue)}
                                             briefDate={selectedBrief.date}
+                                            hideCart={true}
                                         />
                                     ))}
                                 </div>

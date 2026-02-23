@@ -14,6 +14,7 @@ interface IssueCardProps {
     isSelected?: boolean;
     onSelect?: () => void;
     briefDate?: string;
+    hideCart?: boolean;
 }
 
 // URL을 축약된 형태로 변환하는 헬퍼 함수
@@ -27,7 +28,7 @@ const formatUrl = (url: string) => {
     }
 };
 
-export default function IssueCard({ issue, index, onDeepDive, isSelectionMode, isSelected, onSelect, briefDate }: IssueCardProps) {
+export default function IssueCard({ issue, index, onDeepDive, isSelectionMode, isSelected, onSelect, briefDate, hideCart }: IssueCardProps) {
     const { isAdmin } = useAuth();
     const { addToCart, removeFromCart, isInCart } = useBriefCart();
     const inCart = isInCart(issue.headline);
@@ -100,13 +101,15 @@ ${sourcesText}`;
                     >
                         {isCopied ? "✓" : "📋"}
                     </button>
-                    <button
-                        className={`btn-icon-only ${inCart ? 'active' : ''}`}
-                        onClick={handleCartToggle}
-                        title={inCart ? "Remove from Cart" : "Add to Cart"}
-                    >
-                        {inCart ? "🛒✓" : "🛒+"}
-                    </button>
+                    {!hideCart && (
+                        <button
+                            className={`btn-icon-only ${inCart ? 'active' : ''}`}
+                            onClick={handleCartToggle}
+                            title={inCart ? "Remove from Cart" : "Add to Cart"}
+                        >
+                            {inCart ? "🛒✓" : "🛒+"}
+                        </button>
+                    )}
                     {onDeepDive && isAdmin && (
                         <button
                             className="btn-text-icon"
