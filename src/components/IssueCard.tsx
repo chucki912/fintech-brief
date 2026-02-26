@@ -101,7 +101,7 @@ ${sourcesText}`;
                     >
                         {isCopied ? "✓" : "📋"}
                     </button>
-                    {!hideCart && (
+                    {!hideCart && isAdmin && (
                         <button
                             className={`btn-icon-only ${inCart ? 'active' : ''}`}
                             onClick={handleCartToggle}
